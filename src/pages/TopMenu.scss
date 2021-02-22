@@ -1,0 +1,30 @@
+.menu {
+    display: flex;
+    justify-content: space-around;
+
+    .item {
+        background-color: #F6FBFC;
+        color: grey;
+        flex: 1;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+
+    .item:nth-child(1) {
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+    }
+
+    .item:nth-child(3) {
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
+
+    .item.active {
+        background-color: #179BE5;
+        color: white;
+    }
+}

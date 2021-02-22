@@ -1,0 +1,53 @@
+.calendar-page {
+    font-weight: bold;
+
+    .month {
+        text-align: center;
+        font-size: 25px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .calendar table {
+        width: 100%;
+        tr {
+            th, td {
+                padding-top: 10px;
+                padding-bottom: 10px;
+                height: 30px;
+            }
+
+            th {
+                color: #999999;
+            }
+
+            td {
+                text-align:center;
+                font-weight:bold;
+            
+                .markers {
+                    height: 10px;
+                    margin-top: 5px;
+                    
+                    .marker {
+                        height: 5px;
+                        border-radius: 5px;
+                        margin-top: 2px;
+                    }
+                    
+                    .marker.red {
+                        background-color: #D47CF5;
+                    }
+                    .marker.blue {
+                        background-color: #8EC9FF;
+                    }
+                }
+            }
+
+            .active {
+                background-color: #179BE5;
+                border-radius:5px;
+            }
+        }
+    }
+}

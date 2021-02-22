@@ -1,6 +1,6 @@
 import { GraphQLServer } from 'graphql-yoga';
 import mariadb from 'mariadb';
-import {getFoodRequest, insertFoodRequest} from './request_food.js';
+import {getFoodRequest, getShoppingList, insertFoodRequest} from './request_food.js';
 
 const pool = mariadb.createPool({
     host: 'localhost', port:'3306',
@@ -15,7 +15,8 @@ const typeDefs = `
   }
 
   type Query {
-    request_food(year: Int, month: Int): [FoodRequest]
+    request_food(year: Int, month: Int): [FoodRequest],
+    shopping_list: [FoodRequest]
   }
 
   type Mutation {
@@ -30,6 +31,9 @@ const resolvers = {
     request_food: async(_, { year, month }) => {
       return await getFoodRequest(pool, year, month);
     },
+    shopping_list: async(_, {}) => {
+      return await getShoppingList(pool);
+    }
   },
   Mutation: {
     request_food: async(_, {date, text}) => {

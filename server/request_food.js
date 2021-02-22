@@ -1,4 +1,4 @@
-
+import {format} from './util.js';
 
 export const getFoodRequest = async (pool, year, month) => {
     let conn, rows;
@@ -36,4 +36,24 @@ export const insertFoodRequest = async(pool, date, text) => {
         if (conn) conn.end();
         return true;
     }
-  }
+}
+
+export const getShoppingList = async(pool) => {
+    let conn, rows;
+    try{
+        const now = new Date();
+        conn = await pool.getConnection();
+        conn.query('USE shopping_manager');
+        rows = await conn.query(`
+        select date, text 
+        from request_food
+        where date <= '${format(now, 'yyyy-MM-dd')}'`);
+    }
+    catch(err){
+        console.log("error", err);
+    }
+    finally{
+        if (conn) conn.end();
+        return rows;
+    }
+}

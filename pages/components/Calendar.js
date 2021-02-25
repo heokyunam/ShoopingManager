@@ -1,6 +1,6 @@
 import style from '../../styles/Calendar.module.scss';
 
-const CalendarPage = () => {
+const Calendar = () => {
     let weeks = [];
     let week = [];
 
@@ -27,12 +27,11 @@ const CalendarPage = () => {
         }
     }
 
+    weeks.push(week);
+
     return (
         <div className={style.calendar}>
-            <div className={style.month}>
-                Febrary
-            </div>
-            <div className="calendar">
+            <div>
                 <table>
                     <colgroup>
                         <col width="14%"/>
@@ -75,11 +74,8 @@ const CalendarPage = () => {
                     </tbody>
                 </table>
             </div>
-            <div className="foods">
-
-            </div>
         </div>
     )
 }
 
-export default CalendarPage;
+export default Calendar;

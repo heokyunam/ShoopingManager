@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import CalendarPage from './components/Calendar';
+import Calendar from './components/Calendar';
 import TopMenu from './components/TopMenu';
 import FoodList from './components/FoodList';
 
-export default function Home() {
+export default function CalendarPage() {
   return (
     <div>
       <Head>
@@ -11,7 +11,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <TopMenu />
-      <CalendarPage />
+      <Calendar />
       <FoodList />
     </div>
   )

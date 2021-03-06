@@ -10,6 +10,8 @@
     "apollo-client": "^2.6.10",
     "graphql-yoga": "^1.18.3",
     "mariadb": "^2.5.3",
+    "mobx": "^6.1.8",
+    "mobx-react": "^7.1.0",
     "next": "^10.0.7",
     "node-sass": "^5.0.0",
     "react": "^17.0.1",

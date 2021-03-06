@@ -1,22 +1,24 @@
 import style from '../../styles/Calendar.module.scss';
 import {useEffect, useState} from "react";
 import {format} from "../util";
+import useStore from '../stores';
+import {useObserver} from "mobx-react";
 
 const Calendar = (params) => {
     const [weeks, setWeeks] = useState([]);
-    const [selectedDay, setSelectedDay] = useState(null);
+    const {calendar} = useStore();
 
     useEffect(async () => {
         await setWeeks(params.weeks);
-        setSelectedDay(format(new Date(), "yyyy-MM-dd"));
+        calendar.setSelectedDay(format(new Date(), "yyyy-MM-dd"));
     }, [])
 
     const onClickDate = (day) => {
-        setSelectedDay(day.date);
+        calendar.setSelectedDay(day.date);
     }
 
     const getDayClass = (day) => {
-        if(day.date == selectedDay) {
+        if(day.date == calendar.selectedDay) {
             return style.active;
         } else if (day.month != new Date().getMonth()) {
             return style.prevmonth;
@@ -25,7 +27,7 @@ const Calendar = (params) => {
         }
     }
 
-    return (
+    return useObserver(() => (
         <div className={style.calendar}>
             <div>
                 <table>
@@ -71,7 +73,7 @@ const Calendar = (params) => {
                 </table>
             </div>
         </div>
-    )
+    ));
 }
 
 export default Calendar;

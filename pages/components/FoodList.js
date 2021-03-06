@@ -11,22 +11,22 @@ const FoodList = () => {
         "text": "닭다리살",
         "active": false
     },{
-        "text": "치킨",
+        "text": "치킨2",
         "active": false
     }, {
-        "text": "피자",
+        "text": "피자2",
         "active": false
     }, {
-        "text": "닭다리살",
+        "text": "닭다리살2",
         "active": false
     },{
-        "text": "치킨",
+        "text": "치킨3",
         "active": false
     }, {
-        "text": "피자",
+        "text": "피자3",
         "active": false
     }, {
-        "text": "닭다리살",
+        "text": "닭다리살3",
         "active": false
     }];
 

@@ -1,5 +1,5 @@
 import pool from "../db_tool";
-import {format} from "../util";
+import {format} from "../../util";
 
 export default async (req, res) => {
     let conn;

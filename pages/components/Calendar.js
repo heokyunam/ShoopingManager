@@ -1,33 +1,16 @@
 import style from '../../styles/Calendar.module.scss';
+import {useEffect} from "react";
 
-const Calendar = () => {
-    let weeks = [];
-    let week = [];
-
-    for(var i = 1; i < 30; i++) {  
-        week.push({
-            "date": `2021-02-${i}`,
-            "day": i,
-            "active": i == 25,
-            "menu": [
-                {
-                    "type": "blue",
-                    "text": "",
-                },
-                {
-                    "type": "red",
-                    "text": ""
-                }
-            ]
-        })
-
-        if(i % 7 == 0) {
-            weeks.push(week);
-            week = [];
+const Calendar = ({weeks}) => {
+    const getDayClass = (day) => {
+        if(day.active) {
+            return style.active;
+        } else if (day.month != new Date().getMonth()) {
+            return style.prevmonth;
+        } else {
+            return "";
         }
     }
-
-    weeks.push(week);
 
     return (
         <div className={style.calendar}>
@@ -56,17 +39,17 @@ const Calendar = () => {
                     <tbody>
                         {
                             weeks.map(week => (
-                                <tr key={week[0].day}>
+                                <tr key={week[0].date}>
                                     {
-                                        week.map(day => (
-                                            <td key={day.day} className={day.active? style.active: ""}>
+                                        week.map(day => day.day != 0 ? (
+                                            <td key={day.date} className={getDayClass(day)}>
                                                 <div className={style.day}>{day.day}</div>
                                                 <div className={style.markers}>
                                                     <div className={`${style.red} ${style.marker}`}></div>
                                                     <div className={`${style.blue} ${style.marker}`}></div>
                                                 </div>
                                             </td>
-                                        ))
+                                        ) : (<td></td>))
                                     }
                                 </tr>
                             ))

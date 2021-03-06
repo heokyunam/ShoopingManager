@@ -1,4 +1,5 @@
 import pool from "../db_tool";
+import {format, util} from "../../util";
 
 export default async (req, res) => {
     let conn;
@@ -10,14 +11,20 @@ export default async (req, res) => {
         conn = await pool.getConnection();
         conn.query('USE shopping_manager');
         const rows = await conn.query(`
-        select date, text 
+        select id, date, text 
         from request_food
         where date >= '${year}-${month}-1'
         and date <= '${year}-${month}-31'`);
 
         res.send({
             "code": "success",
-            rows
+            "rows": rows.map(row => {
+                return {
+                    id: row.id,
+                    date: format(row.date, "yyyy-MM-dd"),
+                    text: row.text,
+                }
+            })
         });
     }
     catch(err){

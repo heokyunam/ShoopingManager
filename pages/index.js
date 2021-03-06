@@ -45,7 +45,8 @@ const getWeeks = (data) => {
           
           const dateText = format(day, "yyyy-MM-dd");
 
-          const requests = data.rows.filter(value => value.date == dateText)
+          const requests = data.rows
+            .filter(value => value.date == dateText)
             .map(value => {
               return {
                 "type": "blue",
@@ -53,15 +54,10 @@ const getWeeks = (data) => {
               }
             });
 
-          if(requests.length > 0) {
-            console.log(requests);
-          }
-
           days.push({
               "date": dateText,
               "month": day.getMonth(),
               "day": day.getDate(),
-              "active": dateText == format(now, "yyyy-MM-dd"),
               "menu": requests
           })
       }
